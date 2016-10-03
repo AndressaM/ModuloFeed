@@ -1,22 +1,27 @@
 package Notification;
 import java.util.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+@Entity
 public class Notify {
-	String description;
-	Date dateBegin;
-	int idUser;
-	boolean status;
-	int likes; // deve ir para a classe Post
-	ArrayList<String> coments; // deve ir para a classe Post
 	
-	public Notify(String description, Date dateBegin, int idUser, boolean status, int likes,
-			ArrayList<String> coments) {
+	@Column
+	private String description;
+	@Column
+	private Date dateBegin;
+	@Column
+	private int idUser;//isso sera um objeto
+	
+	private boolean status;
+	
+	public Notify(String description, Date dateBegin, int idUser, boolean status) {
 		super();
 		this.description = description;
 		this.dateBegin = dateBegin;
 		this.idUser = idUser;
 		this.status = status;
-		this.likes = likes;
-		this.coments = coments;
+		
 	}
 	public String getDescription() {
 		return description;
@@ -42,18 +47,7 @@ public class Notify {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public int getLikes() {
-		return likes;
-	}
-	public void setLikes(int likes) {
-		this.likes = likes;
-	}
-	public ArrayList<String> getComents() {
-		return coments;
-	}
-	public void setComents(ArrayList<String> coments) {
-		this.coments = coments;
-	}
-	
+
+
 	
 }

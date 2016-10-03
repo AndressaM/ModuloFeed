@@ -7,9 +7,8 @@ public class NotifyEvent extends Notify {
 	// ArrayList<User> participants;
 	Date dateEnd;
 	
-	public NotifyEvent(String description, Date dateBegin, int idUser, boolean status, int likes,
-			ArrayList<String> coments) {
-		super(description, dateBegin, idUser, status, likes, coments);
+	public NotifyEvent(String description, Date dateBegin, int idUser, boolean status) {
+		super(description, dateBegin, idUser, status);
 		// TODO Auto-generated constructor stub
 	}
 

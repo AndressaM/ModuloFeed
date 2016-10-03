@@ -6,9 +6,8 @@ public class NotifyFriendship extends Notify {
 	// User userRequest;
 	String message;
 	
-	public NotifyFriendship(String description, Date dateBegin, int idUser, boolean status, int likes,
-			ArrayList<String> coments) {
-		super(description, dateBegin, idUser, status, likes, coments);
+	public NotifyFriendship(String description, Date dateBegin, int idUser, boolean status) {
+		super(description, dateBegin, idUser, status);
 		// TODO Auto-generated constructor stub
 	}
 
