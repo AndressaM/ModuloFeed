@@ -1,30 +1,22 @@
 package Notification;
 
-
-
-import DAO.Dao;
-import DAO.GenericDAO;
-import Notification.Notify;;
+import Data.Data;
+import Object.User;
 
 public class Main {
-	
-public static void main(String[] args) {
-	
-//Dao dao = new Dao();
-//	
-//	Notify p = new Post();
-//	p.setDescription("Feed");
-//	p.setUserPost("ANdressa");
-//	
-//	dao.addPost(p);	
-//	
-//	GenericDAO dao2 = new Dao();
-//	for(Post p:dao2.getAll(Post.class)){
-//		System.out.println(p.getUserPost());
-//	}
-	
-	
-}
 
-}
+	public static void main(String[] args) {
 
+		Notify nt = new Notify("oila", 0, 0, TYPE_NOTIFY.FRIENDSHIP);
+		User u = new User("matehus");
+		// // Post p = new Post("--", "==", 10, "nada");
+		Data.getDao().save(u);
+		Data.getDao().save(new User("Andressa"));
+		Data.getDao().save(new User("Geymerson"));
+		// Data.getDao().save(u);
+		// Data.getDao().save(p);
+		Data.load();
+//		Notification.birth_day(Data.getUsers().get(0));
+		//
+	}
+}

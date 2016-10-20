@@ -15,19 +15,28 @@ public class Post  {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
 	@Column
 	private String description;
-	
-	
 	@Column
 	private String userPost;
-	
 	@Column
 	private int likes;
-	
 	@Column 
 	private String coments;
+
+
+	public Post() {
+		super();
+	}
+
+
+	public Post(String description, String userPost, int likes, String coments) {
+		super();
+		this.description = description;
+		this.userPost = userPost;
+		this.likes = likes;
+		this.coments = coments;
+	}
 
 
 	public int getId() {
