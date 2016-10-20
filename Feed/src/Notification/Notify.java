@@ -13,25 +13,25 @@ import javax.persistence.Id;
 public class Notify {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	@Column
 	private String description;
 	@Column
 	private Calendar date;
 	@Column
-	private int destination;
+	private Long destination;
 	@Column
 	private boolean recive;
 	@Column
 	private TYPE_NOTIFY type;
 	@Column
-	private Integer sender;
+	private Long sender;
 
 	public Notify() {
 		super();
 	}
 
-	public Notify(String description, int sender, int destination, TYPE_NOTIFY type) {
+	public Notify(String description, Long sender, Long destination, TYPE_NOTIFY type) {
 		super();
 		this.sender = sender;
 		this.type = type;
@@ -62,27 +62,27 @@ public class Notify {
 		this.date = date;
 	}
 
-	public int getDestination() {
+	public Long getDestination() {
 		return destination;
 	}
 
-	public void setDestination(int destination) {
+	public void setDestination(Long destination) {
 		this.destination = destination;
 	}
 
-	public Integer getSender() {
+	public Long getSender() {
 		return sender;
 	}
 
-	public void setSender(Integer sender) {
+	public void setSender(Long sender) {
 		this.sender = sender;
 	}
 
-	public int getUser() {
+	public Long getUser() {
 		return destination;
 	}
 
-	public void setUser(int user) {
+	public void setUser(Long user) {
 		this.destination = user;
 	}
 

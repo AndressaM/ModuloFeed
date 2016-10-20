@@ -8,9 +8,9 @@ import Object.User;
 
 public class Notification {
 	public static void birth_day(User user) {
-		ArrayList<Integer> friends = user.getFriends();
-		for (Integer id : friends) {
-			User u = Data.getDao().get((User)User.class, id);
+		ArrayList<Long> friends = user.getFriends();
+		for (Long id : friends) {
+			User u = Data.getDao().get(User.class, id);
 			if (u.getBirth().equals(Calendar.getInstance())) {
 				Notify n = new Notify("Birth's " + u.getName(), user.getId(), u.getId(), TYPE_NOTIFY.EVENT);
 			}
