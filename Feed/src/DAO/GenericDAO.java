@@ -41,7 +41,12 @@ public abstract class GenericDAO {
 	}
 
 	public <T> T get(final Class<T> type, final Long id) {
-		return (T) sessionFactory.getCurrentSession().load(type, id);
+		session = sessionFactory.openSession();
+
+		session.beginTransaction();
+		return session.get(type, id);
+
+		// return (T) sessionFactory.getCurrentSession().get(type, id);
 	}
 
 	public <T> T merge(final T o) {

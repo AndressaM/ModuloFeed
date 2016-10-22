@@ -12,7 +12,7 @@ public class Data {
 	static private ArrayList<User> users;
 	static private ArrayList<Post> posts;
 	static private ArrayList<Notify> notifies;
-	static private GenericDAO dao;
+	static private Dao dao;
 
 	public static void load() {
 		users = new ArrayList<>();
@@ -33,6 +33,8 @@ public class Data {
 	public static ArrayList<User> getUsers() {
 		return users;
 	}
+	
+	
 
 	public static void setUsers(ArrayList<User> users) {
 		Data.users = users;
@@ -54,9 +56,10 @@ public class Data {
 		Data.notifies = notifies;
 	}
 
-	public static GenericDAO getDao() {
+	public static Dao getDao() {
 		if (dao == null)
-			dao = new Dao();
+			dao = new Dao() {
+			};
 		return dao;
 	}
 

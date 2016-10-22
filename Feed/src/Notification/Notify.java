@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import Data.Data;
+
 @Entity
 public class Notify {
 	@Id
@@ -103,7 +105,23 @@ public class Notify {
 	}
 
 	public String toString() {
+
 		return printData() + " " + description;
+	}
+	public String toStringFriendship() {
+
+		String nameSender = Data.getUsers().get(this.sender.intValue()).getName();
+		System.out.println(nameSender);
+		String nameDest = Data.getUsers().get(this.destination.intValue()).getName();
+		return nameDest + "!"  + nameSender +" quer adiconar você!";
+	}
+	
+	public String toStringMessage() {
+
+		String nameSender = Data.getUsers().get(this.sender.intValue()).getName();
+		System.out.println(nameSender);
+		String nameDest = Data.getUsers().get(this.destination.intValue()).getName();
+		return nameDest + "!"  + nameSender +" Enviou um messagem pra você!" + "Mensagem : "+ this.description;
 	}
 
 }

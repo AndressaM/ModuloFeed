@@ -1,27 +1,46 @@
 package Notification;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import javax.xml.transform.sax.SAXTransformerFactory;
+
+import DAO.Dao;
 import Data.Data;
 import Object.User;
 
 public class Notification {
 	public static void birth_day(User user) {
 		ArrayList<Long> friends = user.getFriends();
-		for (Long id : friends) {
-			User u = Data.getDao().get(User.class, id);
-			if (u.getBirth().equals(Calendar.getInstance())) {
-				Notify n = new Notify("Birth's " + u.getName(), user.getId(), u.getId(), TYPE_NOTIFY.EVENT);
+		if (!friends.isEmpty()) {
+			System.out.println("numero de amigos:= " + friends.size());
+			for (Long id : friends) {
+				User u = Data.getDao().get(User.class, id);
+				DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
+				if (u.printData().equals(df.format(Calendar.getInstance().getTime()))) {
+					Notify n = new Notify("Birth's " + u.getName(), u.getId(), user.getId(), TYPE_NOTIFY.EVENT);
+					Data.getDao().save(n);
+				}
 			}
 		}
 	}
+//	public static void message(User user){
+//		ArrayList<Long> friends = user.getFriends();
+//		if(!friends.isEmpty()){
+//			for(Long id : friends){
+//				User u = Data.getDao().get(User.class, id);
+//				if()
+//				
+//			}
+//		}
+//		
+//	}
 
-	public static ArrayList<Notify> getNotifies(User user) {
+	public static void getNotifies(User user) {
 		ArrayList<Notify> notifies = new ArrayList<>();
 		for (Notify n : Data.getNotifies()) {
-			if (n.getUser() == user.getId()) {
-
+			if (n.getDestination() == user.getId()) {
 				notifies.add(n);
 			}
 		}
@@ -29,7 +48,7 @@ public class Notification {
 		System.out.println("Friendship notification:");
 		for (Notify n : notifies) {
 			if (n.getType().equals(TYPE_NOTIFY.FRIENDSHIP) && !n.isRecive()) {
-				System.out.println('\t' + n.toString());
+				System.out.println('\t' + n.toStringFriendship());
 				n.setRecive(true);
 				Data.getDao().saveOrUpdate(n);
 			}
@@ -45,12 +64,12 @@ public class Notification {
 		System.out.println("Message notification");
 		for (Notify n : notifies) {
 			if (n.getType().equals(TYPE_NOTIFY.MESSAGE) && !n.isRecive()) {
-				System.out.println('\t' + n.toString());
+				System.out.println('\t' + n.toStringMessage());
 				n.setRecive(true);
 				Data.getDao().saveOrUpdate(n);
 			}
 		}
-		return notifies;
+//	Data.load();Notification.birth_day(Data.getUsers().get(0));
 	}
 
 }

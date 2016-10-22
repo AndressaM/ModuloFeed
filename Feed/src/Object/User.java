@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import Data.Data;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +33,8 @@ public class User {
 	public User(String name) {
 		super();
 		this.name = name;
+		this.friends = new ArrayList<>();
+		this.birth = Calendar.getInstance();
 	}
 
 	public String printData() {
@@ -67,11 +71,18 @@ public class User {
 	}
 
 	public ArrayList<Long> getFriends() {
+		if (friends == null)
+			return new ArrayList<>();
 		return friends;
 	}
 
 	public void setFriends(ArrayList<Long> friends) {
 		this.friends = friends;
 	}
+	public void addFriends(Long friend)
+	{	
+		this.friends.add(friend);
+	}
+	
 
 }
